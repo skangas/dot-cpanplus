@@ -32,7 +32,7 @@ sub setup {
     ### conf section
     $conf->set_conf( allow_build_interactivity => 1 );
     $conf->set_conf( base => '/home/skangas/.cpanplus' );
-    $conf->set_conf( buildflags => 'install_base=/home/skangas/perl' );
+    $conf->set_conf( buildflags => 'install_base=/home/skangas/usr' );
     $conf->set_conf( cpantest => 1 );
     if ( $hostname == 'castro') {
         $conf->set_conf( cpantest_mx => 'smtp.mytdc.net' );
