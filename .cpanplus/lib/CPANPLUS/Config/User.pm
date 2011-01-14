@@ -4,7 +4,7 @@
 ###                                         
 ###############################################
 
-#last changed: Thu Jun 17 08:43:48 2010 GMT
+#last changed: Tue Jan 11 07:52:29 2011 GMT
 
 ### minimal pod, so you can find it with perldoc -l, etc
 =pod
@@ -33,7 +33,15 @@ sub setup {
     $conf->set_conf( buildflags => 'install_base=/home/skangas/usr' );    
     $conf->set_conf( cpantest => 1 );    
     $conf->set_conf( cpantest_mx => 'smtp.comhem.basefarm.net' );    
-    $conf->set_conf( cpantest_reporter_args => {} );    
+    $conf->set_conf( cpantest_reporter_args => {
+          'transport_args' => [
+                                'uri',
+                                'https://metabase.cpantesters.org/api/v1/',
+                                'id_file',
+                                '/home/skangas/.metabase/metabase_id.json'
+                              ],
+          'transport' => 'Metabase'
+        } );    
     $conf->set_conf( debug => 0 );    
     $conf->set_conf( dist_type => '' );    
     $conf->set_conf( email => 'skangas@skangas.se' );    
@@ -43,35 +51,35 @@ sub setup {
     $conf->set_conf( flush => 1 );    
     $conf->set_conf( force => 0 );    
     $conf->set_conf( hosts => [
-  {
-    'scheme' => 'ftp',
-    'path' => '/pub/CPAN/',
-    'host' => 'ftp.cpan.org'
-  },
-  {
-    'scheme' => 'http',
-    'path' => '/',
-    'host' => 'www.cpan.org'
-  },
-  {
-    'scheme' => 'ftp',
-    'path' => '/pub/CPAN/',
-    'host' => 'ftp.nl.uu.net'
-  },
-  {
-    'scheme' => 'ftp',
-    'path' => '/pub/CPAN/',
-    'host' => 'cpan.valueclick.com'
-  },
-  {
-    'scheme' => 'ftp',
-    'path' => '/pub/languages/perl/CPAN/',
-    'host' => 'ftp.funet.fi'
-  }
-] );    
+          {
+            'path' => '/pub/CPAN/',
+            'scheme' => 'ftp',
+            'host' => 'ftp.cpan.org'
+          },
+          {
+            'path' => '/',
+            'scheme' => 'http',
+            'host' => 'www.cpan.org'
+          },
+          {
+            'path' => '/pub/CPAN/',
+            'scheme' => 'ftp',
+            'host' => 'ftp.nl.uu.net'
+          },
+          {
+            'path' => '/pub/CPAN/',
+            'scheme' => 'ftp',
+            'host' => 'cpan.valueclick.com'
+          },
+          {
+            'path' => '/pub/languages/perl/CPAN/',
+            'scheme' => 'ftp',
+            'host' => 'ftp.funet.fi'
+          }
+        ] );    
     $conf->set_conf( lib => [
-  '/home/skangas/usr'
-] );    
+          '/home/skangas/usr'
+        ] );    
     $conf->set_conf( makeflags => '-j3' );    
     $conf->set_conf( makemakerflags => 'INSTALL_BASE=/home/skangas/usr' );    
     $conf->set_conf( md5 => 1 );    
