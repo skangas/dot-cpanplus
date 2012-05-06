@@ -32,7 +32,7 @@ sub setup {
     $conf->set_conf( base => '/home/skangas/.cpanplus' );    
     $conf->set_conf( buildflags => 'install_base=/home/skangas/usr' );    
     $conf->set_conf( cpantest => 1 );    
-    $conf->set_conf( cpantest_mx => 'smtp.comhem.basefarm.net' );    
+    $conf->set_conf( cpantest_mx => 'smtp.bahnhof.se' );    
     $conf->set_conf( cpantest_reporter_args => {
           'transport_args' => [
                                 'uri',
